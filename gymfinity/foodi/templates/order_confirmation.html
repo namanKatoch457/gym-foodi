@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}order Confirmation{% endblock title %}
+{% block content %}
+<h2>Order Confirmation</h2>
+<ul>
+    {% for item in items_list %}
+        <li>{{ item.food.name }} - Quantity: {{ item.quantity }}</li>
+    {% empty %}
+        <li>No items in this order.</li>
+    {% endfor %}
+</ul>
+
+
+{% endblock content %}

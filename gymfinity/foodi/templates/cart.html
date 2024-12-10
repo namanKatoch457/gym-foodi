@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{% load static %}
+{% load math_filters %}
+
+{% block title %}Cart{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Your Foodi Cart</h1>
+
+    <!-- Alert Message for successful cart addition -->
+    <div class="alert alert-info alert-dismissible fade show" role="alert" style="display: none;">
+        <strong>Item added to cart!</strong> Check your cart items below.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <div class="card shadow p-4">
+        <h2 class="text-center mb-3">Your Cart Items</h2>
+        
+        <ul class="list-group mb-4">
+            {% for item in cart_items %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <img src="{{ item.food.photo.url }}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;">
+                    <span>{{ item.food.food_name }} - {{ item.quantity }} x ₹{{ item.food.price }}</span>
+                    <span class="fw-bold">Total: ₹{{ item.food.price|multiply:item.quantity }}</span>
+                    <a href="{% url 'remove_from_cart' item.id %}">Remove</a>
+                </li>
+            {% empty %}
+                <li class="list-group-item text-center">Your cart is empty!</li>
+            {% endfor %}
+        </ul>
+
+        <div class="d-flex justify-content-between align-items-center mt-4">
+            <p class="h4">Total Price: ₹{{ total_price }}</p>
+            <a href="{% url 'checkout' %}" class="btn btn-primary">Checkout</a>
+            <a href="{% url 'home' %}" class="btn btn-primary">Continue Shopping</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Additional custom styles */
+    .container {
+        max-width: 800px;
+    }
+    .card {
+        border-radius: 10px;
+    }
+    .list-group-item {
+        font-size: 1.1rem;
+        padding: 15px 20px;
+        background-color: #f9f9f9;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    /* Responsive styling */
+    @media (max-width: 576px) {
+        .h1, .h2 {
+            font-size: 1.5rem;
+        }
+        .btn-primary {
+            width: 100%;
+            text-align: center;
+        }
+    }
+</style>
+{% endblock content %}

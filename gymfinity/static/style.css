@@ -1,0 +1,179 @@
+/* Reset margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set body and html to full height */
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden; /* Prevents horizontal scroll */
+}
+
+/* Content container to fill available space */
+.content {
+    flex: 1; /* Takes up remaining space to push footer down */
+}
+
+/* Footer */
+footer {
+    background: #111;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+}
+
+/* Card styling */
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.card-img {
+    border-radius: 15px;
+}
+
+.card-img-overlay {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7));
+    color: white;
+    border-radius: 15px;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ebb400;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #f8f9fa;
+}
+
+/* Discount badge */
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #001325;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+/* Footer content */
+.footer-content h3 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 3rem;
+}
+
+.footer-content p {
+    max-width: 500px;
+    margin: 10px auto;
+    line-height: 1.6;
+    color: #cac7c7;
+    font-size: 0.9rem;
+}
+
+.socials {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.socials li {
+    margin: 0 10px;
+}
+
+.socials a {
+    color: #fff;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.footer-bottom {
+    background: #000;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+.footer-bottom a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
+}
+
+.footer-menu ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.footer-menu ul li {
+    padding: 0 10px;
+}
+
+.footer-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.footer-menu ul li a:hover {
+    color: #3498db;
+}
+
+/* Navbar username styling */
+.nav-item.user .username {
+    font-weight: bold;
+    color: #007bff;
+    padding: 0 10px;
+    font-size: 18px;
+}
+
+.nav-item.user .username:hover {
+    color: #0056b3;
+    cursor: pointer;
+}
+
+.nav-item.user .username::before {
+    content: url('userpng.png');
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.nav-item.user .avatar {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    vertical-align: middle;
+    border-radius: 50%;
+}
+
+/* Additional overflow fix */
+body::after {
+    content: "";
+    display: block;
+    height: 0; /* Ensures no extra space below */
+}

@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Non-Veg Meal Category{% endblock title %}
+
+{% block content %}
+<h2 class="text bold" style="padding-top: 30px; padding-bottom: 10px; margin-left:110px">Weight Loss Meals💪</h2>
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-4 g-4"> <!-- 4 columns on medium and larger screens -->
+        {% for f in foods %}
+            {% if f.food_type == "NON-VEG" and f.catagory == "WL" %}
+                <div class="col"> <!-- Bootstrap column for responsive layout -->
+                    <div class="card h-100 mb-3"> <!-- Full-height cards -->
+                        <img src="{{f.photo.url}}" class="card-img-top" alt="Product Image" style="height: 150px; object-fit: cover; border-radius: 8px;"> <!-- Inline styling for image -->
+                        <div class="card-body">
+                            <h5 class="card-title" style="color:black;">{{f.food_name}}</h5>
+                            <p class="card-text" style="color:black;">{{f.discription}}</p>
+                            <h6 class="card-price" style="font-weight:600">₹{{f.price}}</h6>
+                            <a href="{% url 'add_to_cart' f.id %}"><button class="btn btn-primary">Add to Cart</button></a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+
+
+<h2 class="text bold" style="padding-top: 30px; padding-bottom: 10px; margin-left:110px">Weight Gain Meals💪</h2>
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-4 g-4"> <!-- 4 columns on medium and larger screens -->
+        {% for f in foods %}
+            {% if f.food_type == "NON-VEG" and f.catagory == "WG" %}
+                <div class="col"> <!-- Bootstrap column for responsive layout -->
+                    <div class="card h-100 mb-3"> <!-- Full-height cards -->
+                        <img src="{{f.photo.url}}" class="card-img-top" alt="Product Image" style="height: 150px; object-fit: cover; border-radius: 8px;"> <!-- Inline styling for image -->
+                        <div class="card-body">
+                            <h5 class="card-title" style="color:black;">{{f.food_name}}</h5>
+                            <p class="card-text" style="color:black;">{{f.discription}}</p>
+                            <h6 class="card-price" style="font-weight:600">₹{{f.price}}</h6>
+                            <a href="{% url 'add_to_cart' f.id %}"><button class="btn btn-primary">Add to Cart</button></a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

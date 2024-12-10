@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}checkout{% endblock title %}
+{% block content %}
+<h2>Checkout</h2>
+
+<div>
+    <h3>User Information</h3>
+    <p><strong>Name:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Phone:</strong> {{ user_profile.phone_number }}</p>
+    <p><strong>Address:</strong> {{ user_profile.address }}</p>
+</div>
+
+<div>
+    <h3>Your Order</h3>
+    <ul>
+        {% for item in cart_items %}
+            <li>{{ item.quantity }} x {{ item.food.food_name }} - ${{ item.food.price }} each</li>
+        {% endfor %}
+    </ul>
+    <p><strong>Total Price:</strong> ${{ total_price }}</p>
+</div>
+
+<a href="{% url 'place_order' %}" class="btn btn-primary">Place Order</a>
+
+{% endblock content %}
